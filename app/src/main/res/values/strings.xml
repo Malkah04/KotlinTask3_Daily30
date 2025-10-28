@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Daily30</string>
+    <string name="day1"> day 1 </string>
+    <string name="day2"> day 2 </string>
+    <string name="day3"> day 3 </string>
+    <string name="day4"> day 4 </string>
+    <string name="day5"> day 5 </string>
+    <string name="day6"> day 6 </string>
+    <string name="day7"> day 7 </string>
+    <string name="day8"> day 8 </string>
+    <string name="day9"> day 9 </string>
+    <string name="day10"> day 10 </string>
+
+    <string name="a1"> Take a 15-minute walk </string>
+    <string name="a2">Drink 6–8 cups of water</string>
+    <string name="a3">Write down 5 things you’re grateful for</string>
+    <string name="a4">Do a 10-minute home workout</string>
+    <string name="a5">Stay off social media for 2 hours</string>
+    <string name="a6">Watch something you love and relax </string>
+    <string name="a7">Write one goal for this week </string>
+    <string name="a8">Spend 30 minutes on a hobby</string>
+    <string name="a9">Read 10 pages of any book</string>
+    <string name="a10">Go to sleep 30 minutes earlier</string>
+
+
+    <string name="b1"> Today I choose a fresh start. I release the weight of yesterday, and I welcome new energy, new thoughts, and new possibilities into my life</string>
+    <string name="b2"> My body is a gift, and I honor it with care. Every sip I take is a reminder that I am nurturing myself from the inside out</string>
+    <string name="b3">“Gratitude opens my heart. I notice the good around me, and I invite more blessings into my life with appreciation and awareness </string>
+    <string name="b5">I create the environment I want to live in. As I bring order to my space, I bring clarity and calm to my life</string>
+    <string name="b6">I allow myself to rest and enjoy the small joys of life. I don’t have to earn relaxation — I deserve it simply because I am human </string>
+    <string name="b7">I move through life with intention. Even one clear goal has the power to change my direction and bring me closer to the future I want</string>
+    <string name="b8"> Creativity flows through me. I don’t have to be perfect; I only have to express myself and enjoy the process of becoming</string>
+    <string name="b9"> I am moving forward, step by step, physically and emotionally. Progress is progress, no matter how small it looks.”</string>
+    <string name="b10"> My mind deserves nourishment. With every page, I grow, I learn, and I evolve into a wiser version of myself</string>
+    <string name="b4"> “I am becoming stronger in my body and mind. I show up for myself even when it’s hard, because I deserve to feel powerful and alive </string>
+
+
+    <string name="expand_more"> expand_more </string>
+
+
+
+
+
+</resources>
