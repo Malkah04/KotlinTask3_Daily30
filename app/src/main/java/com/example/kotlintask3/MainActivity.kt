@@ -6,12 +6,11 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,14 +28,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.kotlintask3.DataSource.ThirteenDayData
+import com.example.kotlintask3.model.ThirteenDayData
 import com.example.kotlintask3.ui.theme.Kotlintask3Theme
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -51,158 +48,100 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
-import com.example.kotlintask3.Box.BOX
+import com.example.kotlintask3.data.dataof30Day
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.ArrowLeft
+import androidx.compose.material.icons.filled.ArrowRight
 import androidx.compose.material.icons.filled.ExpandMore
-import androidx.compose.material3.Button
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import android.R.attr.left
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.kotlintask3.navagation.ApplicationNavigation
 
+
+private const val TAG="mainActivity"
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Kotlintask3Theme(darkTheme = false) {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    App()
-                }
+            MyApp {
+                ApplicationNavigation()
             }
         }
     }
 }
 
 @Composable
-private fun cardButton(expand:Boolean , onclick:()->Unit , modifier: Modifier = Modifier){
+fun MyApp(content :@Composable ()->Unit){
+    Kotlintask3Theme(darkTheme = true) {
+        content()
 
-    IconButton(
-        onClick = onclick,
-        modifier = modifier
-    ) {
-        Icon(
-            imageVector = Icons.Filled.ExpandMore,
-            contentDescription = stringResource(R.string.expand_more),
-            tint = MaterialTheme.colorScheme.secondary
-
-        )
     }
-
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun AppBar(modifier: Modifier = Modifier) {
-    CenterAlignedTopAppBar(
-        title = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = modifier.height(300.dp)
-
-            ) {
-                Image(
-                    modifier = Modifier.clip(CircleShape).width(200.dp),
-                    painter = painterResource(R.drawable.logo2),
-                    contentScale = ContentScale.Crop,
-                    contentDescription = null
-                )
-
-                Spacer(modifier.height(20.dp))
-
-            }
-        },
-        modifier = modifier
-    )
 }
 
 
-
 @Composable
-fun ItemCard(modifier: Modifier= Modifier , day : ThirteenDayData){
-    var expanded by remember { mutableStateOf(false) }
-    Card(shape = RoundedCornerShape(topEnd = 50.dp , topStart = 0.dp , bottomEnd = 50.dp , bottomStart = 50.dp) , modifier = Modifier.padding(10.dp)) {
-        Column(modifier.padding(20.dp).animateContentSize(spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessLow))) {
-            Text(
-                text = stringResource(day.day ),
-                color =MaterialTheme.colorScheme.primary,
-                fontSize = MaterialTheme.typography.headlineMedium.fontSize
-            )
-            Text(
-                text = stringResource(day.title),
-                color = MaterialTheme.colorScheme.secondary,
-                fontSize = MaterialTheme.typography.headlineSmall.fontSize
+fun CustomTopBar(navController: NavController,
+                 modifier: Modifier= Modifier ,
+                 header:String ="30 dayChallange",
+                 screen1 :Boolean =true,
+                 screen2 :Boolean =false,
+                 screen3 :Boolean =false
 
-            )
-            Image(
-                painter = painterResource(day.imageRecourse),
-                contentDescription = stringResource(day.day),
-                modifier
-                    .fillMaxWidth()
-                    .width(200.dp)
-                    .height(250.dp)
-                    .padding(10.dp)
-                    .clickable{expanded=!expanded}
-                    ,
-                contentScale = ContentScale.Crop
-            )
+){
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.primary)
+            .padding(vertical = 16.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            if(screen2 || screen3) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier
+                        .padding(start = 16.dp)
+                        .clickable {
+                            navController.popBackStack()
 
-//            cardButton(
-//                expand = expanded,
-//                onclick = { expanded = !expanded },
-//            )
-
-
-            if(expanded){
-                Text(
-                    text = stringResource(day.body ),
-                    color = MaterialTheme.colorScheme.secondary,
-                    fontSize = MaterialTheme.typography.bodyLarge.fontSize
+                        }
                 )
             }
-        }
-    }
-}
-
-@Composable
-fun CardList(days: List<ThirteenDayData>){
-    Column {
-//        Text(
-//            text = "30 days of Challenges",
-//            style = MaterialTheme.typography.headlineLarge,
-//            modifier = Modifier.padding(20.dp)
-//        )
-    AppBar()
-
-    LazyColumn {
-            items(days) { d ->
-                ItemCard(day = d)
-            }
-        }
-    }
-}
-
-@Composable
-fun App() {
-    val layoutDir = LocalLayoutDirection.current
-    Surface(
-        Modifier
-            .fillMaxSize()
-            .statusBarsPadding()
-            .padding(
-                start = WindowInsets.safeDrawing.asPaddingValues().calculateStartPadding(layoutDir),
-                end = WindowInsets.safeDrawing.asPaddingValues().calculateEndPadding(layoutDir)
+            Text(
+                text = header,
+                color = Color.White,
+                style = MaterialTheme.typography.headlineLarge
             )
-    ) {
+            if(screen1 || screen2 ) {
+                Icon(
+                    imageVector = Icons.Default.ArrowForward,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier
+                        .padding(end = 16.dp)
+                        .clickable {
+                            when {
+                                screen1 -> navController.navigate("Screen2")
+                                screen2 -> navController.navigate("Screen3")
+                            }
+                        }
+                )
+            }
 
-        CardList(days = BOX.box)
+        }
     }
 }
+
 

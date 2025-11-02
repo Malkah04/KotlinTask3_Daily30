@@ -1,4 +1,4 @@
-package com.example.kotlintask3.DataSource
+package com.example.kotlintask3.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

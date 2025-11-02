@@ -1,10 +1,9 @@
-package com.example.kotlintask3.Box
+package com.example.kotlintask3.data
 
-import com.example.kotlintask3.DataSource.ThirteenDayData
+import com.example.kotlintask3.model.ThirteenDayData
 import com.example.kotlintask3.R
-import javax.sql.DataSource
 
-object BOX {
+object dataof30Day {
     val box = listOf<ThirteenDayData>(
         ThirteenDayData(R.string.day1 ,R.string.a1 ,R.drawable.i1,R.string.b1) ,
         ThirteenDayData(R.string.day2 ,R.string.a2 ,R.drawable.i2,R.string.b2),
