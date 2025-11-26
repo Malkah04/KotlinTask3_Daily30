@@ -29,6 +29,7 @@ class saveViewModel: ViewModel() {
     fun reset(){
         k.value =0
         numberOfItem.value=0
+        item.clear()
     }
 
     fun addItem(name:String ,price :Int){
