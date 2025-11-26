@@ -3,6 +3,7 @@ package com.example.kotlintask3.screens.homeScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Card
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,13 +23,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.kotlintask3.CustomTopBar
+import com.example.kotlintask3.data.dataof30Day
 import com.example.kotlintask3.saveViewModel
-
-
+import com.example.kotlintask3.screens.screen1.CardList
 
 
 @Composable
-fun Home(navController: NavController,viewModel: saveViewModel){
+fun Home(navController: NavController ,viewModel: saveViewModel){
+    Scaffold(topBar = {
+        CustomTopBar(navController , header = "Home" , screen2 = true , screen1 = false , screen3 = false)
+    }) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            page(navController ,viewModel)
+        }
+
+    }
+}
+
+@Composable
+fun page(navController: NavController,viewModel: saveViewModel){
     var number = viewModel.numberOfItem
 
 

@@ -1,6 +1,7 @@
 package com.example.kotlintask3.screens.cartScreen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,10 +20,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.kotlintask3.CustomTopBar
 import com.example.kotlintask3.saveViewModel
 
 @Composable
-fun Cart(navController: NavController,viewModel: saveViewModel){
+fun Cart (navController: NavController ,viewModel: saveViewModel){
+    Scaffold(topBar = {
+        CustomTopBar(navController , header = "Cart" , screen2 = false , screen1 = false , screen3 = true)
+    }) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding)) {
+            page(navController ,viewModel)
+        }
+
+    }
+}
+@Composable
+fun page(navController: NavController,viewModel: saveViewModel){
 
     var total_price = viewModel.totalPrice
     Column {

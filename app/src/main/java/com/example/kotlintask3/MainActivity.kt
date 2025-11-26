@@ -114,7 +114,16 @@ fun CustomTopBar(navController: NavController,
                     modifier = Modifier
                         .padding(start = 16.dp)
                         .clickable {
-                            navController.popBackStack()
+                            val popped =navController.popBackStack()
+                            if(!popped){
+                                navController.navigate("Screen1"){
+                                    popUpTo("Screen1"){
+                                        inclusive=true
+                                    }
+                                    launchSingleTop=true
+                                }
+
+                            }
 
                         }
                 )
