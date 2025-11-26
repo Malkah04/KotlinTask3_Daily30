@@ -133,8 +133,8 @@ fun CustomTopBar(navController: NavController,
                         .padding(end = 16.dp)
                         .clickable {
                             when {
-                                screen1 -> navController.navigate("Screen2")
-                                screen2 -> navController.navigate("Screen3")
+                                screen1 -> navController.navigate("Home")
+                                screen2 -> navController.navigate("Cart")
                             }
                         }
                 )
@@ -142,6 +142,12 @@ fun CustomTopBar(navController: NavController,
 
         }
     }
+}
+@Composable
+fun move(viewModel: saveViewModel ,Home:Boolean ,Cart: Boolean){
+
+
+
 }
 
 

@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -112,23 +113,28 @@ fun Images(navController: NavController,
         Column(
             modifier
                 .padding(30.dp)
-                .background(Color.LightGray)
+                .background(MaterialTheme.colorScheme.secondary)
                 .fillMaxWidth()
                 .height(100.dp).align(Alignment.End)
         ) {
             Text(
                 text = title,
                 modifier.padding( 10.dp),
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
             )
             Row {
                 Text(text = owner,
                     modifier.padding( 10.dp),
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+
                 )
                 Text(
                     text = date,
-                    modifier.padding( 10.dp)
+                    modifier.padding( 10.dp),
+                    color = Color.Blue
+
                 )
             }
         }
