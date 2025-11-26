@@ -5,8 +5,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.kotlintask3.saveViewModel
-import com.example.kotlintask3.screens.Cart
-import com.example.kotlintask3.screens.Home
+import com.example.kotlintask3.screens.cartScreen.Cart
+import com.example.kotlintask3.screens.homeScreen.Home
 import com.example.kotlintask3.screens.screen1.Screen1
 import com.example.kotlintask3.screens.screen2.Screen2
 import com.example.kotlintask3.screens.screen3.Screen3

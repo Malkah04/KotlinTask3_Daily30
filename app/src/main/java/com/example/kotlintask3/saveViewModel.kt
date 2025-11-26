@@ -13,8 +13,7 @@ import kotlin.collections.set
 class saveViewModel: ViewModel() {
 
     var item = mutableStateListOf<Pair<String ,Int>>()
-//   total price
-    var k = mutableStateOf(0)
+    var totalPrice = mutableStateOf(0)
 
 
     var numberOfItem = mutableStateOf(0)
@@ -24,10 +23,10 @@ class saveViewModel: ViewModel() {
     }
 
     fun addPrice(price:Int){
-        k.value = k.value +price
+        totalPrice.value = totalPrice.value +price
     }
     fun reset(){
-        k.value =0
+        totalPrice.value =0
         numberOfItem.value=0
         item.clear()
     }
